@@ -98,6 +98,132 @@ Reputation Management Systems
 
 \end{frame}
 
+
+
+%% Michael
+\begin{frame}{Systems -- OXYME -- Approach}
+Oxyme, Amsterdam
+\begin{itemize}
+\item Machine Learning
+\item Naive Bayes
+\item SVM
+\item Decision Trees (J48)
+\item Features: combination of related work
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Systems -- OXYME -- Features -- Query dependent features}
+Features depending on query, not tweet content!
+\begin{itemize}
+\item Wikipedia disambiguation page?
+\item Common first or last name?
+\item Dictionary entry?
+\item Query identical to identity name (TODO)
+\item Amount of negative feedback terms
+\item Query difficulty: combination of all features
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Systems -- OXYME -- Features -- Relevancy Features}
+\begin{itemize}
+\item language modeling approach w/ manual relevance feedback
+\item for each query: create two wordclouds from most frequently used terms
+  \begin{itemize}
+  \item one cloud from tweets containing term as separate word
+  \item one cloud from tweets not containing term as separate word
+  \end{itemize}
+\item Nivea
+  \begin{itemize}
+  \item negative feedback terms: Nivea, "Don't mess with my men", @nivea\_mariee\_
+  \item positive feedback terms: body, cream, care
+  \end{itemize}
+\item relevancy score
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Systems -- OXYME -- Features -- Tweet Features}
+\begin{itemize}
+\item Tweet length
+\item Tweet contains link
+\item Tweet contains link to domain
+\item Tweet starts with @username
+\item Tweet is retweet
+\item Tweet is question
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Systems -- OXYME -- Features -- Tweet Features}
+\begin{itemize}
+\item SentiStrength (TODO)
+\item generates sentiment scores based on word lists + associated weights
+\item rated training tweets used to add words to dictionary and optimize weights
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Systems -- OXYME -- Results -- Filtering Subtask}
+Filtering Subtask
+\begin{itemize}
+\item OXY\_2: Naive Bayes, both languages
+  \begin{itemize}
+  \item Accuracy 0.809
+  \item F(R,S): 0.197 (why?)
+  \end{itemize}
+\item OXY\_1: SVM, both languages
+  \begin{itemize}
+  \item Accuracy: 0.798
+  \item F(R,S): 0.139
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Systems -- OXYME -- Results -- Polarity Subtask}
+Polarity Subtask
+\begin{itemize}
+\item OXY\_3: J48, all features, both languages
+  \begin{itemize}
+  \item Accuracy: 0.381
+  \item F(R,S): 0.194
+  \end{itemize}
+\item OXY\_4: J48, SentiStrength features, both languages
+  \begin{itemize}
+   \item Accuracy: 0.347
+   \item F(R,S): 0.256
+  \end{itemize}
+\item Baseline: all positive
+  \begin{itemize}
+  \item Accuracy: 0.438
+  \item Best run in workshop: Accuracy: 0.487
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Systems -- OXYME -- Results -- Overall}
+Overall Results
+\begin{itemize}
+ \item OXY\_2: Naive Bayes classifier, all features, both languages
+  \begin{itemize}
+  \item Accuracy: 0.412
+  \end{itemize}
+\item OXY\_1: SVM, all features, both languages
+  \begin{itemize}
+  \item Accuracy: 0.387
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+%% End Michael
+
+
+
 \begin{frame}{Systems -- UNED -- Filtering}
 
 \begin{itemize}
@@ -121,6 +247,8 @@ Reputation Management Systems
 
 
 
+
+
 \begin{frame}{Systems -- UNED -- Polarity}
 \begin{itemize}
 \item To determine the polarity of a tweet the Authors extended an existing approach
@@ -135,7 +263,11 @@ Reputation Management Systems
 
 \end{frame}
 
-\begin{frame}{Evaluation}
+
+
+
+
+\begin{frame}{Overall -- Evaluation}
 \begin{itemize}
 \item Evaluation is difficult because the tasks consists of subtasks
 \item Measures:
@@ -148,7 +280,7 @@ Reputation Management Systems
 \end{frame}
 
 
-\begin{frame}{Results}
+\begin{frame}{Overall -- Results}
 \begin{itemize}
 \item Monitoring:
 \begin{itemize}
