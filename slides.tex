@@ -102,7 +102,7 @@ Reputation Management Systems
 
 %% Michael
 \begin{frame}{Systems -- OXYME -- Approach}
-Oxyme, Amsterdam
+Oxyme, Amsterdam \cite{oxyme}
 \begin{itemize}
 \item Machine Learning
 \item Naive Bayes
@@ -223,7 +223,7 @@ Overall Results
 
 \begin{frame}{Systems -- GAVAGAI -- Approach}
 \begin{itemize}
-\item Commercial System: Ethersource by Gavagai
+\item Commercial System: Ethersource by Gavagai \cite{gavagai}
 \item Distributional semantics represented in a semantic space
 \end{itemize}
 
@@ -345,17 +345,66 @@ Overall
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Our Approach}
-
+\begin{frame}{Our Approach -- Overview}
+\begin{itemize}
+\item RepLab 2012 is over (and too hard)
+\item RepLab 2013 too late - in September
+\item Let's build a web service: sentiment analysis for German tweets!
+  \begin{itemize}
+  \item Get sense of sentiment towards given \#topic
+  \end{itemize}
+\end{itemize}
 \end{frame}
+
+
+
+\begin{frame}{Our Approach -- Related Work}
+Not many people working on German data.
+\begin{itemize}
+\item \textit{Predicting Elections with Twitter} \cite{elections}
+  \begin{itemize}
+  \item Translates German tweets with Google Translate :(
+  \end{itemize}
+\item \textit{Language-Independent Twitter Sentiment Analysis} \cite{narr}
+  \begin{itemize}
+  \item Semi-supervised learning approach
+  \item Tweet labels generated from emoticons
+  \item More data is better data
+  \item Manually annotated test set available (!)
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Our Approach -- Details}
+\begin{itemize}
+\item Grab German tweets from Twitter streaming API
+  \begin{itemize}
+  \item 1000 per hour, 1000 out of 18500 ":)", 155 ":("
+  \end{itemize}
+\item Generate labeled training data from tweets containing emoticons \cite{goodbadomg} \cite{emotiontokens} \cite{sentimentanalysistwitter}
+\item Optional: generate more labeled training data from manually labeled hash tags \cite{goodbadomg}  
+\item Extract features based on related work
+\item Train machine learning classifier
+\item Evaluate classifier on test set -- \cite{narr}
+\item Build web service interfacing with classifier
+\end{itemize}
+\end{frame}
+
+
 
 
 \begin{frame}{References}
 \begin{thebibliography}{-}
-\bibitem{amigo} Amigo, E., Gonzalo, J., Verdejo, F.: Reliability and sensitivity: Generic evaluation
-measures for document organization tasks. Technical report, UNED (2012)
-\bibitem{replab} 
-
+\bibitem{amigo} Amigo, E., Gonzalo, J., Verdejo, F.: Reliability and sensitivity: Generic evaluation measures for document organization tasks. Technical report, UNED (2012)
+\bibitem{replab} Amigo et al: Overview of RepLab 2012: Evaluation Online Reputation Management Systems. CLEF 2012 Lab Reports (2012)
+\bibitem{oxyme} Kaptein, R.: Learning to Anlyze Relevancy and Polarity of Tweets. CLEF Online Working Notes/Labs/Workshop, (2012)
+\bibitem{gavagai} Karlgren et al: Profiling Reputation of Corporate Entities in Semantic Space. CLEF Online Working Notes/Labs/Workshop, (2012)
+\bibitem{elections} Tumasjan et al.: Predicting Elections with Twitter: What 140 Characters reveal about Political Sentiment. Proceedings of the Fourth International AAAI conference on Weblogs and Social Media (2010)
+\bibitem{narr} Narr, S., Hülfenhaus, M., Albayrak, S.: Language-Independent Twitter Sentiment Analysis. Proceedings KDML-2012
+\bibitem{goodbadomg} Kouloumpis E., Wilson T., Moore J.: Twitter Sentiment Analysis: The Good the Bad and the OMG!.  Proceedings of the Fifth International AAAI conference on Weblogs and Social Media (2011)
+\bibitem{emotiontokens} Cui et al.: Emotion tokens: Bridging the Gap Among Multilingual Twitter Sentiment Analysis, Proceedings of 7th Asia Information Retrieval Societies Conference (2011)
+\bibitem{sentimentanalysistwitter} Agarwal et al.: Sentiment Analysis of Twitter Data. Proceeding LSM '11 Proceedings of the Workshop on Languages in Social Media (2011)
 \end{thebibliography}
 \end{frame}
 \end{document}
