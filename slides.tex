@@ -134,7 +134,7 @@ Features depending on query, not tweet content!
 \item Wikipedia disambiguation page?
 \item Common first or last name?
 \item Dictionary entry?
-\item Query identical to identity name (TODO)
+\item Query term identical to entity name
 \item Amount of negative feedback terms
 \item Query difficulty: combination of all features
 \end{itemize}
@@ -155,9 +155,15 @@ Features depending on query, not tweet content!
   \item Negative feedback terms: Nivea, "Don't mess with my men", @nivea\_mariee\_
   \item Positive feedback terms: body, cream, care
   \end{itemize}
-\item Relevancy score \begin{math} logP(R|D,Q) = logP(R|D) + \sum_{ t \in Q_{pos} } {P(t|Q)*logP(t|D) - P(t|Q)*logP(t|C)} - 
-    \sum_{ t \in Q_{neg} } { P(t|Q)logP(t|D) - P(t|Q)logP(t|C) } \end{math}
 \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Systems -- OXYME -- Features -- Relevancy Score}
+\begin{math} logP(R|D,Q) = logP(R|D) + \sum_{ t \in Q_{pos} } {P(t|Q)*logP(t|D) - P(t|Q)*logP(t|C)} - 
+    \sum_{ t \in Q_{neg} } { P(t|Q)logP(t|D) - P(t|Q)logP(t|C) }
+\end{math}
 
 \end{frame}
 
@@ -176,7 +182,7 @@ Features depending on query, not tweet content!
 
 \begin{frame}{Systems -- OXYME -- Features -- Tweet Features}
 \begin{itemize}
-\item SentiStrength (TODO)
+\item SentiStrength, derived from MySpace comments (Thelwall, 2010)
 \item Generates sentiment scores based on word lists + associated weights
 \item Rated training tweets used to add words to dictionary and optimize weights
 \end{itemize}
@@ -188,13 +194,18 @@ Filtering Subtask
 \begin{itemize}
 \item OXY\_2: Naive Bayes, both languages
   \begin{itemize}
-  \item Accuracy 0.809
-  \item F(R,S): 0.197 (why?)
+  \item Accuracy 0.81
+  \item F(R,S): 0.197
   \end{itemize}
 \item OXY\_1: SVM, both languages
   \begin{itemize}
   \item Accuracy: 0.798
   \item F(R,S): 0.139
+  \end{itemize}
+\item Baseline: all relevant
+  \begin{itemize}
+  \item Accuracy: 0.71
+  \item F(R,S): 0
   \end{itemize}
 \end{itemize}
 
@@ -205,18 +216,20 @@ Polarity Subtask
 \begin{itemize}
 \item OXY\_3: J48, all features, both languages
   \begin{itemize}
-  \item Accuracy: 0.381
-  \item F(R,S): 0.194
+  \item Accuracy: 0.38
+  \item F(R,S): 0.19
   \end{itemize}
 \item OXY\_4: J48, SentiStrength features, both languages
   \begin{itemize}
-   \item Accuracy: 0.347
-   \item F(R,S): 0.256
+   \item Accuracy: 0.35
+   \item F(R,S): 0.26
   \end{itemize}
 \item Baseline: all positive
   \begin{itemize}
-  \item Accuracy: 0.438
-  \item Best run in workshop: Accuracy: 0.487
+  \item Accuracy: 0.44
+  \item Best run in workshop: Accuracy: 0.49
+  \item F(R,S): 0
+  \item Best run in workshop: 0.40
   \end{itemize}
 \end{itemize}
 
@@ -232,6 +245,10 @@ Overall Results
 \item OXY\_1: SVM, all features, both languages
   \begin{itemize}
   \item Accuracy: 0.387
+  \end{itemize}
+\item Baseline: all relevant and positive
+  \begin{itemize}
+  \item Accuracy: 0.27
   \end{itemize}
 \end{itemize}
 
@@ -271,17 +288,17 @@ Overall Results
 \begin{frame}{Systems -- GAVAGAI -- Results}
 Filtering
 \begin{itemize}
-\item Accuracy: 0.77 (0.72)
-\item F(R,S): 0.22 (0.27)
+\item Accuracy: 0.77
+\item F(R,S): 0.22
 \end{itemize}
 Polarity
 \begin{itemize}
-\item Accuracy: 0.38 (0.45)
-\item F(R,S): 0.28 (0.32)
+\item Accuracy: 0.38
+\item F(R,S): 0.28
 \end{itemize}
 Overall
 \begin{itemize}
-\item Accuracy: 0.42
+\item Accuracy: 0.40
 \end{itemize}
 
 \end{frame}
@@ -333,13 +350,13 @@ Overall
 \begin{frame}{Systems -- UNED -- Results}
 Filtering
 \begin{itemize}
-\item Accuracy: 0.71 (0.72)
-\item F(R,S): 0.13 (0.17)
+\item Accuracy: 0.71
+\item F(R,S): 0.13
 \end{itemize}
 Polarity
 \begin{itemize}
-\item Accuracy: 0.44 (0.52)
-\item F(R,S): 0.26 (0.17)
+\item Accuracy: 0.49 
+\item F(R,S): 0.31
 \end{itemize}
 Overall
 \begin{itemize}
@@ -347,8 +364,6 @@ Overall
 \end{itemize}
 
 \end{frame}
-
-
 
 
 \begin{frame}{Overall -- Results}
@@ -362,6 +377,7 @@ Overall
 \item OXYME (0.41)
 \item Gavagai (0.40)
 \item UNED (0.39)
+\item Baseline: all relevant and positive (0.27)
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -372,7 +388,8 @@ Overall
 \item RepLab 2013 too late - in September
 \item Let's build a web service: sentiment analysis for German tweets!
   \begin{itemize}
-  \item Get sense of sentiment towards given \#topic
+  \item Get sense of sentiment about given \#topic
+  \item --> Polarity for reputation
   \end{itemize}
 \end{itemize}
 \end{frame}
