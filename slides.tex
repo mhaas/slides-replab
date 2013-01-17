@@ -16,7 +16,18 @@ Reputation Management Systems
 \end{frame}
 
 \begin{frame}{Overview}
-
+\begin{itemize}
+\item Introduction
+\item RepLab 2012
+\begin{itemize}
+\item Tasks
+\item Data
+\item Evaluation
+\item Systems
+\item Overall Results
+\end{itemize}
+\item Our Approach
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Introduction}
@@ -77,7 +88,7 @@ Reputation Management Systems
 \item With metainformation (link to Wikipedia, link to website, ...)
 \item 300 tweets for each company are annotated by reputation experts
 \end{itemize}
-\item test data:
+\item Test data:
 \begin{itemize}
 \item At least 50,000 tweets per 31 companies
 \item In English and Spanish
@@ -89,13 +100,17 @@ Reputation Management Systems
 \end{frame}
 
 
-\begin{frame}{Systems -- }
-
-\end{frame}
-
-
-\begin{frame}{Systems -- }
-
+\begin{frame}{Evaluation}
+\begin{itemize}
+\item Evaluation is difficult because the tasks consist of subtasks
+\item Measures:
+\begin{itemize}
+\item Reliability: \textit{[...] probability of finding the document relationships in the gold standard when they appear in the output [...]} \cite{amigo}
+\item Sensitivity: \textit{[...] probability of finding the gold standard relationships in the system output [...]} \cite{amigo}
+\item Accuracy
+\item F(R,S): harmonic mean between Reliability and Sensitivity
+\end{itemize}
+\end{itemize}
 \end{frame}
 
 
@@ -129,18 +144,19 @@ Features depending on query, not tweet content!
 
 \begin{frame}{Systems -- OXYME -- Features -- Relevancy Features}
 \begin{itemize}
-\item language modeling approach w/ manual relevance feedback
-\item for each query: create two wordclouds from most frequently used terms
+\item Language modeling approach w/ manual relevance feedback
+\item For each query in background corpus: create two wordclouds from most frequently used terms
   \begin{itemize}
-  \item one cloud from tweets containing term as separate word
-  \item one cloud from tweets not containing term as separate word
+  \item One cloud from tweets containing term as separate word
+  \item One cloud from tweets not containing term as separate word
   \end{itemize}
 \item Nivea
   \begin{itemize}
-  \item negative feedback terms: Nivea, "Don't mess with my men", @nivea\_mariee\_
-  \item positive feedback terms: body, cream, care
+  \item Negative feedback terms: Nivea, "Don't mess with my men", @nivea\_mariee\_
+  \item Positive feedback terms: body, cream, care
   \end{itemize}
-\item relevancy score
+\item Relevancy score \begin{math} logP(R|D,Q) = logP(R|D) + \sum_{ t \in Q_{pos} } {P(t|Q)*logP(t|D) - P(t|Q)*logP(t|C)} - 
+    \sum_{ t \in Q_{neg} } { P(t|Q)logP(t|D) - P(t|Q)logP(t|C) } \end{math}
 \end{itemize}
 
 \end{frame}
@@ -276,8 +292,7 @@ Overall
 
 
 
-\begin{frame}{Systems -- UNED -- Filtering}
-
+\begin{frame}{Systems -- UNED -- Filtering \cite{uned}}
 \begin{itemize}
 \item sentence splitting and tokenization with GATE
 \item stop words and symbols were removed
@@ -303,31 +318,37 @@ Overall
 
 \begin{frame}{Systems -- UNED -- Polarity}
 \begin{itemize}
-\item To determine the polarity of a tweet the Authors extended an existing approach
+\item To determine the polarity of a tweet the authors extended an existing approach
 \end{itemize}
 \begin{enumerate}
 \item Pre--processing: POS Tagging (GATE, FreeLing) and Concept Identification (parsing and wsd to WordNet--Synsets)
-\item Emotion Identification: Mapping from WordNet--Synsets to SentiSense--WordNet
+\item Emotion Identification: Mapping from WordNet--Synsets to SentiSense lexicon
 \item Post--processing: Negations and intensifiers were marked by using a list of common used phrases. The scope was determined by the parse trees.
 \item Classification: Generated informations were packed in a so called Vector of Emotional Intensities (VEI) which represents the information from the SentiSense lexicon.
-\item Classification algorithm: variant of Heterogeneity Based Approach (uses a set of classifiers)
+\item Classification algorithm: variant of Heterogeneity Based Ranking (uses a set of classifiers)
 \end{enumerate}
 
 \end{frame}
 
-
-
-\begin{frame}{Overall -- Evaluation}
+\begin{frame}{Systems -- UNED -- Results}
+Filtering
 \begin{itemize}
-\item Evaluation is difficult because the tasks consists of subtasks
-\item Measures:
+\item Accuracy: 0.71 (0.72)
+\item F(R,S): 0.13 (0.17)
+\end{itemize}
+Polarity
 \begin{itemize}
-\item Reliability: \textit{[...] probability of finding the document relationships in the gold standard when they appear in the output [...]} \cite{amigo}
-\item Sensitivity: \textit{[...] probability of finding the gold standard relationships in the system output [...]} \cite{amigo}
-\item Accuracy
+\item Accuracy: 0.44 (0.52)
+\item F(R,S): 0.26 (0.17)
 \end{itemize}
+Overall
+\begin{itemize}
+\item Accuracy: 0.39
 \end{itemize}
+
 \end{frame}
+
+
 
 
 \begin{frame}{Overall -- Results}
@@ -394,10 +415,10 @@ Not many people working on German data.
 
 
 
-\begin{frame}{References}
+\begin{frame}[allowframebreaks]{References}
 \begin{thebibliography}{-}
 \bibitem{amigo} Amigo, E., Gonzalo, J., Verdejo, F.: Reliability and sensitivity: Generic evaluation measures for document organization tasks. Technical report, UNED (2012)
-\bibitem{replab} Amigo et al: Overview of RepLab 2012: Evaluation Online Reputation Management Systems. CLEF 2012 Lab Reports (2012)
+\bibitem{replab} Amigo et al: Overview of RepLab 2012: Evaluation Online Reputation Management Systems. 
 \bibitem{oxyme} Kaptein, R.: Learning to Anlyze Relevancy and Polarity of Tweets. CLEF Online Working Notes/Labs/Workshop, (2012)
 \bibitem{gavagai} Karlgren et al: Profiling Reputation of Corporate Entities in Semantic Space. CLEF Online Working Notes/Labs/Workshop, (2012)
 \bibitem{elections} Tumasjan et al.: Predicting Elections with Twitter: What 140 Characters reveal about Political Sentiment. Proceedings of the Fourth International AAAI conference on Weblogs and Social Media (2010)
@@ -405,6 +426,7 @@ Not many people working on German data.
 \bibitem{goodbadomg} Kouloumpis E., Wilson T., Moore J.: Twitter Sentiment Analysis: The Good the Bad and the OMG!.  Proceedings of the Fifth International AAAI conference on Weblogs and Social Media (2011)
 \bibitem{emotiontokens} Cui et al.: Emotion tokens: Bridging the Gap Among Multilingual Twitter Sentiment Analysis, Proceedings of 7th Asia Information Retrieval Societies Conference (2011)
 \bibitem{sentimentanalysistwitter} Agarwal et al.: Sentiment Analysis of Twitter Data. Proceeding LSM '11 Proceedings of the Workshop on Languages in Social Media (2011)
+\bibitem{uned} Carrillo-de-Albornoz, J., Chugur, I., Amigó, E.: Using an Emotion-based Model and Sentiment Analysis Techniques to Classify Polarity for Reputation. CLEF 2012 Lab Reports (2012)
 \end{thebibliography}
 \end{frame}
 \end{document}
