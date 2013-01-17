@@ -1,0 +1,179 @@
+\documentclass[12pt,a4paper]{beamer}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Michael Haas, Tilman Wittl}
+\title{Overview of RepLab 2012: Evaluating Online
+Reputation Management Systems
+}
+\date{18. Januar 2013}
+\begin{document}
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}{Overview}
+
+\end{frame}
+
+\begin{frame}{Introduction}
+\begin{itemize}
+\item For companies and public figures a good reputation is an important component in public relations.
+\item Due to the availability of online media traditional advertising is not the only way to build and keep an image.
+\item Online media reach more people and nearly everyone can participate.
+\item Opinions can be spread very fast to a large audience.
+\item Therefore there is a need to analyse online media automatically.
+\end{itemize}
+\end{frame}
+\begin{frame}{Online Reputation Management (ORM)}
+\begin{itemize}
+\item Online Reputation Management (ORM) subsumes all methods to analyze online media in order to maintain the reputation of a company or public figure.
+\item Obviously natural language processing is a key player in ORM.
+\item ORM is very related to opinion mining, but has a focus on companies and public figures not mainly on products.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{RepLab 2012}
+\begin{itemize}
+\item Workshop on Online Reputation Management
+\item Twitter was used as resource
+\item consists of two tasks -- \textit{Monitoring} and \textit{Profiling}u
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Monitoring}
+\begin{itemize}
+\item continuous analyze of online media
+\item recognize issues that might affect a company/public figure
+\item systems had to process a stream of tweets
+\item in this task two subtasks had to be solved
+\begin{itemize}
+\item cluster tweets themetically
+\item assign a priority score to the clusters
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Profiling}
+\begin{itemize}
+\item in contrast to the monitoring task no continuos analyze
+\item systems had to annotate tweets with the following information:
+\begin{itemize}
+\item relevance/filtering (e.g. Apple -- fruit or company)
+\item polarity (positive -- neutral -- negative)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Data}
+\begin{itemize}
+\item trial data:
+\begin{itemize}
+\item ca. 30,000 tweets crawled for each of six companies (Apple, Lufthansa, Alcatel, Armani, Marriott, Barclays)
+\item in English and Spanish
+\item with metainformation (link to Wikipedia, link to website, ...)
+\item 300 tweets for each company are annotated by reputation experts
+\end{itemize}
+\item test data:
+\begin{itemize}
+\item at least 50,000 tweets per 31 companies
+\item in English and Spanish
+\item companies differ from the trial data
+\end{itemize}
+\item test data is much larger and different than trial data
+\item machine learning is not possible
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Systems -- }
+
+\end{frame}
+
+
+\begin{frame}{Systems -- }
+
+\end{frame}
+
+\begin{frame}{Systems -- UNED -- Filtering}
+
+\begin{itemize}
+\item sentence splitting and tokenization with GATE
+\item stop words and symbols were removed
+\item filtering is done by four rules
+\end{itemize}
+\begin{itemize}
+\item Rules
+\begin{enumerate}
+\item text contains (full) entity name (e.g. Apple Inc.)
+\item text contains part of entity name (e.g. Mercedes for Mercedes--Benz)
+\item text contains entity name without whitespace (e.g. \#MercedesBenz)
+\item Wikipedia entry and website contains words of text
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Systems -- UNED -- Polarity}
+\begin{itemize}
+\item To determine the polarity of a tweet the Authors extended an existing approach
+\end{itemize}
+\begin{enumerate}
+\item Pre--processing: POS Tagging (GATE, FreeLing) and Concept Identification (parsing and wsd to WordNet--Synsets)
+\item Emotion Identification: Mapping from WordNet--Synsets to SentiSense--WordNet
+\item Post--processing: Negations and intensifiers were marked by using a list of common used phrases. The scope was determined by the parse trees.
+\item Classification: Generated informations were packed in a so called Vector of Emotional Intensities (VEI) which represents the information from the SentiSense lexicon.
+\item Classification algorithm: variant of Heterogeneity Based Approach (uses a set of classifiers)
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Evaluation}
+\begin{itemize}
+\item Evaluation is difficult because the tasks consists of subtasks
+\item Measures:
+\begin{itemize}
+\item Reliability: \textit{[...] probability of finding the document relationships in the gold standard when they appear in the output [...]} \cite{amigo}
+\item Sensitivity: \textit{[...] probability of finding the gold standard relationships in the system output [...]} \cite{amigo}
+\item Accuracy
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Results}
+\begin{itemize}
+\item Monitoring:
+\begin{itemize}
+\item NO system did beat the baseline!
+\end{itemize}
+\item Profiling (best 3 systems):
+\begin{itemize}
+\item OXYME (0.41)
+\item Gavagai (0.40)
+\item UNED (0.39)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Our Approach}
+
+\end{frame}
+
+
+\begin{frame}{References}
+\begin{thebibliography}{-}
+\bibitem{amigo} Amigo, E., Gonzalo, J., Verdejo, F.: Reliability and sensitivity: Generic evaluation
+measures for document organization tasks. Technical report, UNED (2012)
+\bibitem{replab} 
+
+\end{thebibliography}
+\end{frame}
+\end{document}
